@@ -22,7 +22,7 @@ end
     @y_coordinate = starting_position[1].to_i
     @dir = starting_position[2]
 
-    puts "Please give me directions to the drill site."
+    puts "Please give me directions."
     instructions = gets.split(//)
 
     instructions.each do |instruction|
