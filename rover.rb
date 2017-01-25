@@ -1,28 +1,23 @@
-class Rover
+class Plateau
+  def initialize(x_axis, y_axis)
+    @x_axis = x_axis
+    @y_axis = y_axis
+  end
+end
 
+class Armadillo
   attr_accessor :x_coordinate, :y_coordinate, :dir
 
-  def initialize
-    @x_coordinate = x_coordinate
-    @y_coordinate = y_coordinate
+  def initialize(x_coordinate, y_coordinate, dir)
+    @x_coordinate = x_coordinate.to_i
+    @y_coordinate = y_coordinate.to_i
     @dir = dir
     read
   end
-
 end
 
   def read
-    puts "How large is the plateau size?"
-    plateau_size = gets.chomp
-
-    puts "Where is Rover 1 starting?"
-    starting_position = gets.split(" ")
-
-    @x_coordinate = starting_position[0].to_i
-    @y_coordinate = starting_position[1].to_i
-    @dir = starting_position[2]
-
-    puts "Please give me directions."
+    puts "Please enter the Armadillo's instructions."
     instructions = gets.split(//)
 
     instructions.each do |instruction|
@@ -32,7 +27,6 @@ end
         when instruction == "R" then turn(instruction)
       end
     end
-
   end
 
   def move
@@ -45,7 +39,7 @@ end
   end
 
   def turn(instruction)
-    case instruction
+    case
       when @dir == "N" && instruction == "L" then @dir = "W"
       when @dir == "N" && instruction == "R" then @dir = "E"
       when @dir == "E" && instruction == "L" then @dir = "N"
@@ -57,4 +51,37 @@ end
     end
   end
 
-  # 1 = Rover.new
+puts ""
+puts "The United States government has just asked you to save the world. You will be joining two groups of blue collar deep-core drillers aboard the
+shuttles Freedom and Independance and travel to an asteroid on a collision course with Earth."
+puts ""
+puts "Each shuttle contains an Armadillo, a refitted mobile driller. The landing sites and drill sites are situated at different positions on the asteroid's
+plateau. You are tasked with landing each shuttle and providing each Armadillo with directions to the drill sites. The Earth is depending on you.
+God Speed."
+
+puts ""
+puts "Please enter the dimensions of the asteroid's plateau."
+plateau = gets.split(" ")
+Asteroid = Plateau.new(plateau[0], plateau[1])
+
+
+puts ""
+puts "Please enter Freedom's landing coordinates."
+starting_position = gets.split(" ")
+Freedom = Armadillo.new(starting_position[0], starting_position[1], starting_position[2])
+
+puts ""
+puts "Please enter Independance's landing coordinates."
+starting_position = gets.split(" ")
+Independance = Armadillo.new(starting_position[0], starting_position[1], starting_position[2])
+
+
+puts ""
+puts " Congratulations! You have directed Freedom to the drill site at #{Freedom.x_coordinate} #{Freedom.y_coordinate} #{Freedom.dir} and
+Independance to the drill site at #{Independance.x_coordinate} #{Independance.y_coordinate} #{Independance.dir}."
+
+puts ""
+puts ""
+puts "                      https://www.youtube.com/watch?v=JkK8g6FMEXE"
+puts ""
+puts ""
